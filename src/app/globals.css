@@ -130,3 +130,5 @@
     @apply font-sans;
   }
 }
+
+@plugin "@tailwindcss/typography";

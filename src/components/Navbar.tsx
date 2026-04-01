@@ -36,7 +36,7 @@ export const Navbar = () => {
                                 href="/"
                                 aria-label="home"
                                 className="flex items-center space-x-2">
-                                <Image src="/logo.svg" alt="logo" width={50} height={50} />
+                                <Image src="/logo.svg" alt="logo" width={30} height={30} />
                             </Link>
 
                             <button

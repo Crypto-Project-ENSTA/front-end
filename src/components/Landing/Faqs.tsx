@@ -6,28 +6,28 @@ export default function FAQs() {
     const faqItems = [
         {
             id: 'item-1',
-            question: 'question-1',
-            answer: 'answer-1',
+            question: 'What is E-Voting?',
+            answer: 'E-Voting is a secure electronic voting system. It uses RSA cryptography, blind signatures, and hash functions to guarantee vote anonymity, integrity, and verifiability.',
         },
         {
             id: 'item-2',
-            question: 'question-2',
-            answer: 'answer-2',
+            question: 'How does the voting process work?',
+            answer: 'Each voter receives two codes: one for authentication (N1) and one for verification (N2). After authentication, the vote is securely processed, signed, encrypted, and submitted without revealing the voter’s identity.',
         },
         {
             id: 'item-3',
-            question: 'question-3',
-            answer: 'answer-3',
+            question: 'Is my vote anonymous?',
+            answer: 'Yes. The system is designed so that no authority can link a voter to their vote. Sensitive steps are separated across different roles to preserve complete anonymity.',
         },
         {
             id: 'item-4',
-            question: 'question-4',
-            answer: "answer-4",
+            question: 'How does the system prevent fraud?',
+            answer: "Security is ensured through role separation and cryptographic controls. No single entity has enough information or access to manipulate votes or compromise the system.",
         },
         {
             id: 'item-5',
-            question: 'question-5',
-            answer: 'answer-5',
+            question: 'Can I verify that my vote was counted?',
+            answer: 'Yes. After the voting phase, verification data is published. Each voter can use their personal code (N2) to confirm that their vote was included, without revealing their identity.',
         },
     ]
 

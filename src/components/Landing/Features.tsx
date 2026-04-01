@@ -1,13 +1,39 @@
 import { Card, CardContent } from '@/components/ui/card'
-import { MdOutlineSecurity } from "react-icons/md";
+import { 
+  Signature, 
+  Users, 
+  LockKeyhole, 
+  Hash, 
+  ShieldCheck 
+} from 'lucide-react'
 
 
 const features = [
-    { title: 'title-1', description: 'description-1', icone: <MdOutlineSecurity />},
-    { title: 'title-2', description: 'description-2', icone: <MdOutlineSecurity />},
-    { title: 'title-3', description: 'description-3', icone: <MdOutlineSecurity />},
-    { title: 'title-4', description: 'description-4', icone: <MdOutlineSecurity />},
-    { title: 'title-5', description: 'description-5', icone: <MdOutlineSecurity />},
+    { 
+        title: 'Blind Signatures', 
+        description: 'The Administrator signs each ballot digitally without seeing its content, ensuring complete voter privacy.', 
+        icone: <Signature />
+    },
+    { 
+        title: 'Strict Role Separation', 
+        description: 'Four independent entities manage separate stages of the election. No single party can alter votes or trace them back to voters.', 
+        icone: <Users />
+    },
+    { 
+        title: 'End-to-End Encryption', 
+        description: 'Votes are encrypted with the Counter’s public key before storage, keeping them confidential until official counting.', 
+        icone: <LockKeyhole />
+    },
+    { 
+        title: 'Cryptographic Hashing', 
+        description: 'Voter verification codes (N2) are stored as secure hashes, making it impossible to reconstruct or forge votes.', 
+        icone: <Hash />
+    },
+    { 
+        title: 'Public Verifiability', 
+        description: 'After counting, all (N2, vote) pairs are published. Voters can verify their ballot was counted without revealing identities.', 
+        icone: <ShieldCheck />
+    },
 ]
 
 export default function Features() {

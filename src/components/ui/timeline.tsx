@@ -36,7 +36,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       className="w-full bg-background font-sans md:px-10"
       ref={containerRef}
     >
-      <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
+      <div className="max-w-7xl mx-auto pt-20 px-4 md:px-8 lg:px-10">
         <h2 className="mt-3 font-semibold text-3xl tracking-tight md:text-4xl">
            Voting Process Timeline
         </h2>

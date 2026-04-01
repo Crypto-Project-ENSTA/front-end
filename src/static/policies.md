@@ -1,94 +1,138 @@
-# Policies of E-Voting
+# Policies
 
-This document defines the rules and guarantees governing the E-voting system.
-
----
-
-## Eligibility
-
-- Only registered voters with a valid **N1 authentication code** can participate.
-- Each N1 code can be used **once only**.
-- Any invalid or reused code is rejected.
+These policies define the rules, guarantees, and security boundaries governing the CryptoVote system. They are enforced cryptographically — not by trust.
 
 ---
 
-## Privacy & Anonymity
+## 1. Voter Eligibility
 
-- Votes are protected using **blind signatures**, ensuring the administrator cannot see their content.
-- Ballots are **encrypted** before being stored.
-- No entity can link a vote to a specific voter.
-
----
-
-## Vote Validity
-
-A vote is considered valid only if:
-
-- It contains a correct **administrator signature**
-- It includes a valid **N2 verification code**
-- The N2 code matches a valid stored **hash fingerprint**
-
-Invalid or tampered votes are automatically rejected.
+- Only registered voters who have received a valid **N1 authentication code** may participate
+- N1 codes are generated once, distributed securely, and valid for a single use
+- Any N1 code that is invalid, already used, or not in the system is **permanently rejected**
+- There is no appeal or retry mechanism — eligibility is determined by the Commissioner at the moment of authentication
 
 ---
 
-## One Person, One Vote
+## 2. Data Collection & Consent
 
-- Each voter can submit **only one vote**
-- Once used, the N1 code is removed from the valid list
-- Duplicate voting attempts are prevented
-
----
-
-## Verification
-
-- Each voter can verify their vote using their **N2 code**
-- Published results may include (N2, vote) pairs
-- This ensures transparency without revealing identities
-
----
-
-## Security Model
-
-The system is designed so that no single entity can compromise the election:
-
-- **Commissioner** cannot create votes (only verifies N1)
-- **Administrator** cannot see vote content (blind signature)
-- **Anonymizer** cannot read votes (encrypted)
-- **Counter** cannot link votes to voters
+- By registering and providing their **email address**, the voter explicitly agrees to receive
+  their authentication credentials (N1 and N2 codes) through that channel
+- The email address is used **solely** for credential delivery — it is never shared,
+  sold, or used for any other purpose
+- Once credentials are dispatched, the email address serves no further role in the
+  voting process and is not linked to any submitted vote
+- The system stores the email address in the `voters` table exclusively to facilitate
+  initialization — it has no relationship to the `votes` or `counted_votes` tables
+- Participation in the election constitutes acceptance of these data terms
+- Voters who do not consent should not provide their email address and cannot participate
 
 ---
 
-## Integrity Protection
+## 3. One Person, One Vote
 
-The system prevents:
-
-- Vote forgery  
-- Vote duplication  
-- Unauthorized vote submission  
-- Post-submission vote modification  
+- Each N1 code is **invalidated immediately and atomically** upon successful vote submission
+- The invalidation is a database-level atomic transaction — it cannot be interrupted or replayed
+- Any subsequent attempt to vote using the same N1 code is rejected at the protocol level
+- The system does not distinguish between an honest retry and a malicious replay — both are rejected equally
 
 ---
 
-## Result Integrity
+## 4. Ballot Authenticity
 
-- Votes are counted only after full verification
-- Any vote failing validation checks is discarded
-- Final results reflect only **valid and verified ballots**
+A ballot is accepted for counting **only if all three conditions are met simultaneously**:
 
----
+| Condition | Enforced By |
+|---|---|
+| Valid RSA digital signature from the Administrator | Counter verifies using Administrator's public key |
+| Valid N2 verification code embedded in the ballot | Counter extracts N2, Voting System hashes it |
+| `hash(N2)` present in the Commissioner's valid list | Commissioner confirms the fingerprint |
 
-## Transparency
-
-E-voting promotes transparency by allowing:
-
-- Independent verification of vote inclusion  
-- Public validation of results (without identity exposure)  
+Any ballot failing one or more of these conditions is **silently discarded** — it is never counted and never stored in `counted_votes`.
 
 ---
 
-## Final Note
+## 5. Privacy & Anonymity
 
-E-voting is designed as a **secure academic implementation** of an electronic voting protocol, demonstrating how cryptographic principles can ensure trust in digital elections.
+- The Administrator signs ballots using a **blind signature protocol** — it never sees the vote content, only a mathematically masked version
+- Ballots are **RSA-encrypted** with the Counter's public key before submission — no intermediate entity can read them
+- The Anonymizer stores only the encrypted ballot — with no reference to the voter's identity, N1, or session
+- Random bits are embedded in every ballot at construction time, making it impossible to correlate an encrypted submission with a published result
+- **No entity in the system — individually or in collusion — can link a vote to a voter**
 
 ---
+
+## 6. N2 Code Policy
+
+- N2 is generated by the Voting System and sent to the voter once
+- Only `hash(N2)` is stored in the system — N2 in plaintext is destroyed immediately after dispatch
+- The Commissioner never receives N2 in plaintext — it only ever validates `hash(N2)`
+- N2 is the voter's personal proof that their vote was counted — it must be kept private
+- Publishing your N2 code publicly reveals which candidate you voted for
+
+---
+
+## 7. Vote Verification
+
+- After the election closes, any voter may submit their N2 code to verify their vote was counted
+- The system computes `hash(N2)` and checks for its presence in `counted_votes`
+- A match confirms the vote was accepted and tallied
+- No match may indicate the vote was rejected during counting (invalid signature or invalid N2) or that counting has not yet completed
+- Verification reveals only whether the vote was counted — never its content to any third party
+
+---
+
+## 8. Security Model & Role Separation
+
+The system is designed under the assumption that **any single entity may be compromised**. Role separation ensures this does not compromise the election.
+
+| Entity | What It Knows | What It Cannot Do |
+|---|---|---|
+| **Commissioner** | Valid N1 codes, `hash(N2)` fingerprints | Read votes, create ballots, link votes to voters |
+| **Administrator** | That a voter is eligible (N1 valid) | See vote content, link a signed ballot to a voter |
+| **Anonymizer** | That an encrypted blob was submitted | Decrypt votes, read N2, link submission to identity |
+| **Counter** | Decrypted vote content and N2 | Link a vote to the voter who cast it |
+| **Voting System** | N1, N2 at generation time only | Retain N2 after dispatch (destroyed immediately) |
+
+No collusion of fewer than all five entities simultaneously can break voter anonymity.
+
+---
+
+## 9. Integrity Protections
+
+The system prevents the following attacks at the protocol level:
+
+| Attack | Prevention Mechanism |
+|---|---|
+| **Vote forgery** | Ballots without a valid Administrator RSA signature are rejected |
+| **Vote duplication** | `hash(N2)` has a UNIQUE database constraint — a second insertion fails |
+| **Double voting** | N1 invalidated atomically on first submission |
+| **Ballot tampering** | Any modification to a signed ballot invalidates the RSA signature |
+| **Unauthorized submission** | Anonymizer rejects any submission with an invalid or used N1 |
+| **Replay attack** | N1 single-use + random bits in ballot prevent replay at both layers |
+
+---
+
+## 10. Result Publication
+
+- Results are published only after the counting phase is complete and all ballots are processed
+- Aggregated totals are public — individual ballots are not
+- The system may optionally publish `(hash(N2), vote)` pairs to allow independent verification
+- Published pairs reveal no voter identity — only that a particular N2 code voted for a particular option
+- Voters wishing to verify publicly may cross-reference their own `hash(N2)` against the published list
+
+---
+
+## 11. System Limitations
+
+CryptoVote is an **academic implementation** of a cryptographic voting protocol. The following limitations apply:
+
+- The system does not implement coercion resistance — a voter who reveals their N2 under duress can be forced to prove their vote
+- Credential delivery (N1 and N2 by email) is outside the cryptographic trust model
+- The Voting System must be trusted at initialization time — it generates and dispatches N2 before destroying it
+- The system assumes secure channels between the voter's browser and the backend API
+
+These limitations are consistent with the academic scope of the project and are documented for transparency.
+
+---
+
+*CryptoVote — Applied Cryptography Project · ENSTA Alger · Supervisor: Mrs. Souad KHERROUBI*

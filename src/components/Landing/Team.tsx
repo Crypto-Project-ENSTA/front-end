@@ -8,7 +8,7 @@ const teamMembers = [
   {
     name: "Ferkioui Akram",
     title: "Frontend Developer",
-    bio: "Responsible for building the user interface and integrating frontend with backend APIs, designs the system architecture .",
+    bio: "Designs system architecture, builds UI, and integrates frontend with backend APIs.",
     imageUrl:
       "https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=600",
     linkedinUrl: "https://www.linkedin.com/in/ferkioui-akram?utm_source=share_via&utm_content=profile&utm_medium=member_android",
@@ -18,7 +18,7 @@ const teamMembers = [
   {
     name: "Hammouti Walid",
     title: "Backend Developer",
-    bio: "Develops the system architecture and backend services using FastAPI.",
+    bio: "Designs backend architecture, ORM structure, configurations, routes, and services using FastAPI.",
     imageUrl:
       "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600",
     linkedinUrl: "https://www.linkedin.com/in/hammouti-walid-616952315?utm_source=share_via&utm_content=profile&utm_medium=member_android",
@@ -28,7 +28,7 @@ const teamMembers = [
   {
     name: "Belouahar Sophia",
     title: "Database Developer",
-    bio: "Manages database design, migrations, and data integrity across environments.",
+    bio: "Manages database design, migrations, and ensures data integrity across all environments.",
     imageUrl:
       "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=600",
     linkedinUrl: "https://www.linkedin.com/in/belouahar-sophia-251589391?utm_source=share_via&utm_content=profile&utm_medium=member_android",
@@ -38,7 +38,7 @@ const teamMembers = [
   {
     name: "Bouterbag Amal",
     title: "Cryptography Developer",
-    bio: "Implements cryptographic protocols including RSA, blind signatures, and hashing.",
+    bio: "Implements cryptographic protocols including RSA, blind signatures, and secure hashing mechanisms.",
     imageUrl:
       "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=600",
     linkedinUrl: "https://www.linkedin.com/in/amel-bouterbag-b80266334?utm_source=share_via&utm_content=profile&utm_medium=member_android",
@@ -48,7 +48,7 @@ const teamMembers = [
   {
     name: "Zerguini Maylis",
     title: "Frontend Developer",
-    bio: "Designs and implements user interfaces across ley platform features",
+    bio: "Designs and implements user interfaces across key platform features and user workflows.",
     imageUrl:
       "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=600",
     linkedinUrl: "https://www.linkedin.com/in/maylis-zerguini-b557b3291?utm_source=share_via&utm_content=profile&utm_medium=member_android",
@@ -59,7 +59,7 @@ const teamMembers = [
 
 const Team = () => {
   return (
-    <section className="mt-30">
+    <section className="mt-30" id="contact">
       <div className="mx-auto flex max-w-(--breakpoint-xl) flex-col justify-center gap-14 px-6 py-8 sm:py-16 lg:flex-row lg:px-8">
         <div className="sm:max-w-sm lg:max-w-xs">
           <b className="font-semibold text-muted-foreground text-sm uppercase">
@@ -120,9 +120,9 @@ const Team = () => {
                     className="bg-accent shadow-none hover:bg-accent"
                     size="icon"
                   >
-                    <Link href={member.emailUrl} target="_blank">
+                    <a href={member.emailUrl} target="_blank">
                       <SiGmail className="stroke-muted-foreground" />
-                    </Link>
+                    </a>
                   </Button>
                 </div>
               </div>

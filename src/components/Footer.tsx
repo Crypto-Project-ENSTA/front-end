@@ -4,7 +4,7 @@ import Image from "next/image";
 const links = [
   {
     title: "About",
-    href: "/#about",
+    href: "/about",
   },
   {
     title: "Contact",
@@ -16,7 +16,7 @@ const links = [
   },
   {
     title: "Privacy Policy",
-    href: "/#privacy",
+    href: "/policies",
   },
 ];
 

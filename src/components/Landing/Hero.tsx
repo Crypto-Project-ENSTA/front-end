@@ -6,6 +6,7 @@ import Image from "next/image";
 import { TextEffect } from "@/components/ui/text-effect";
 import { AnimatedGroup } from "@/components/ui/animated-group";
 
+
 const transitionVariants = {
   item: {
     hidden: {
@@ -82,7 +83,7 @@ export default function Hero() {
               <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
                 <AnimatedGroup variants={transitionVariants}>
                   <Link
-                    href="#link"
+                    href="/about"
                     className="bg-muted hover:bg-accent group mx-auto flex w-fit items-center gap-4 rounded-full border border-border p-1 pl-4 shadow-sm transition-colors duration-300"
                   >
                     <span className="text-foreground text-sm font-medium">

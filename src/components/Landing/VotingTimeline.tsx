@@ -8,10 +8,10 @@ export default function VotingTimeline() {
       title: "Registration & Authentication",
       content: (
         <div>
-          <p className="mb-8 text-xs font-normal text-muted-foreground md:text-sm">
+          <p className="mb-8 text-xs font-normal text-muted-foreground md:text-lg">
              Each voter receives two unique codes: N1 (authentication) and N2 (verification). The commissioner holds a list of valid N1 codes.
           </p>
-           <p className="mb-8 text-xs font-normal text-muted-foreground md:text-sm">
+           <p className="mb-8 text-xs font-normal text-muted-foreground md:text-lg">
               The voter submits N1 to the administrator, who verifies it with the commissioner to confirm voting eligibility.
           </p>
           <div className="grid grid-cols-2 gap-4">
@@ -27,13 +27,13 @@ export default function VotingTimeline() {
       title: "Voting Flow",
       content: (
         <div>
-          <p className="mb-8 text-xs font-normal text-muted-foreground md:text-sm">
+          <p className="mb-8 text-xs font-normal text-muted-foreground md:text-lg">
             The voter selects their vote and forms a ballot containing the vote, N2, and random data.
           </p>
-          <p className="mb-8 text-xs font-normal text-muted-foreground md:text-sm">
+          <p className="mb-8 text-xs font-normal text-muted-foreground md:text-lg">
              Using blind signatures, the voter masks the ballot before sending it to the administrator for signing, ensuring the vote remains hidden.
           </p>
-           <p className="mb-8 text-xs font-normal text-muted-foreground md:text-sm">
+           <p className="mb-8 text-xs font-normal text-muted-foreground md:text-lg">
              The signed ballot is then unblinded, encrypted with the counter’s public key, and sent with N1 to the anonymizer, who validates and records the vote.
           </p>
           <div className="grid grid-cols-2 gap-4">
@@ -49,13 +49,13 @@ export default function VotingTimeline() {
       title: "Results & Verification",
       content: (
         <div>
-          <p className="mb-4 text-xs font-normal text-muted-foreground md:text-sm">
+          <p className="mb-4 text-xs font-normal text-muted-foreground md:text-lg">
              After the voting period ends, the counter decrypts all ballots using its private key and verifies their authenticity using the administrator’s public key.
           </p>
-          <p className="mb-4 text-xs font-normal text-muted-foreground md:text-sm">
+          <p className="mb-4 text-xs font-normal text-muted-foreground md:text-lg">
              The commissioner checks the validity of N2 using stored hash fingerprints to prevent fraudulent votes.
           </p>
-          <p className="mb-4 text-xs font-normal text-muted-foreground md:text-sm">
+          <p className="mb-4 text-xs font-normal text-muted-foreground md:text-lg">
              Valid votes are counted, and published results allow voters to verify their vote using their N2 code without revealing their identity.
              </p>        
           <div className="grid grid-cols-2 gap-4">

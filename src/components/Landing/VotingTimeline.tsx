@@ -5,11 +5,14 @@ import Image from "next/image";
 export default function VotingTimeline() {
   const data = [
     {
-      title: "2024",
+      title: "Registration & Authentication",
       content: (
         <div>
           <p className="mb-8 text-xs font-normal text-muted-foreground md:text-sm">
-            Built and launched Aceternity UI and Aceternity UI Pro from scratch
+             Each voter receives two unique codes: N1 (authentication) and N2 (verification). The commissioner holds a list of valid N1 codes.
+          </p>
+           <p className="mb-8 text-xs font-normal text-muted-foreground md:text-sm">
+              The voter submits N1 to the administrator, who verifies it with the commissioner to confirm voting eligibility.
           </p>
           <div className="grid grid-cols-2 gap-4">
             <Image src="https://assets.aceternity.com/templates/startup-1.webp" alt="startup template" width={500} height={500} className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60" />
@@ -21,16 +24,17 @@ export default function VotingTimeline() {
       ),
     },
     {
-      title: "Early 2023",
+      title: "Voting Flow",
       content: (
         <div>
           <p className="mb-8 text-xs font-normal text-muted-foreground md:text-sm">
-            I usually run out of copy, but when I see content this big, I try to
-            integrate lorem ipsum.
+            The voter selects their vote and forms a ballot containing the vote, N2, and random data.
           </p>
           <p className="mb-8 text-xs font-normal text-muted-foreground md:text-sm">
-            Lorem ipsum is for people who are too lazy to write copy. But we are
-            not. Here are some more example of beautiful designs I built.
+             Using blind signatures, the voter masks the ballot before sending it to the administrator for signing, ensuring the vote remains hidden.
+          </p>
+           <p className="mb-8 text-xs font-normal text-muted-foreground md:text-sm">
+             The signed ballot is then unblinded, encrypted with the counter’s public key, and sent with N1 to the anonymizer, who validates and records the vote.
           </p>
           <div className="grid grid-cols-2 gap-4">
             <Image src="https://assets.aceternity.com/pro/hero-sections.png" alt="hero template" width={500} height={500} className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60" />
@@ -42,19 +46,18 @@ export default function VotingTimeline() {
       ),
     },
     {
-      title: "Changelog",
+      title: "Results & Verification",
       content: (
         <div>
           <p className="mb-4 text-xs font-normal text-muted-foreground md:text-sm">
-            Deployed 5 new components on Aceternity today
+             After the voting period ends, the counter decrypts all ballots using its private key and verifies their authenticity using the administrator’s public key.
           </p>
-          <div className="mb-8">
-            <div className="flex items-center gap-2 text-xs text-foreground md:text-sm">✅ Card grid component</div>
-            <div className="flex items-center gap-2 text-xs text-foreground md:text-sm">✅ Startup template Aceternity</div>
-            <div className="flex items-center gap-2 text-xs text-foreground md:text-sm">✅ Random file upload lol</div>
-            <div className="flex items-center gap-2 text-xs text-foreground md:text-sm">✅ Himesh Reshammiya Music CD</div>
-            <div className="flex items-center gap-2 text-xs text-foreground md:text-sm">✅ Salman Bhai Fan Club registrations open</div>
-          </div>
+          <p className="mb-4 text-xs font-normal text-muted-foreground md:text-sm">
+             The commissioner checks the validity of N2 using stored hash fingerprints to prevent fraudulent votes.
+          </p>
+          <p className="mb-4 text-xs font-normal text-muted-foreground md:text-sm">
+             Valid votes are counted, and published results allow voters to verify their vote using their N2 code without revealing their identity.
+             </p>        
           <div className="grid grid-cols-2 gap-4">
             <Image src="https://assets.aceternity.com/pro/hero-sections.png" alt="hero template" width={500} height={500} className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60" />
             <Image src="https://assets.aceternity.com/features-section.png" alt="feature template" width={500} height={500} className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60" />

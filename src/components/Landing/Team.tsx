@@ -6,54 +6,54 @@ import { Button } from "@/components/ui/button";
 
 const teamMembers = [
   {
-    name: "John Doe",
-    title: "Founder & CEO",
-    bio: "Former co-founder of Opendoor. Early staff at Spotify.",
+    name: "Ferkioui Akram",
+    title: "Frontend Developer",
+    bio: "Responsible for building the user interface and integrating frontend with backend APIs, designs the system architecture .",
     imageUrl:
       "https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=600",
-    linkedinUrl: "#",
+    linkedinUrl: "https://www.linkedin.com/in/ferkioui-akram?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     githubUrl: "#",
-    emailUrl: "mailto:#",
+    emailUrl: "mailto:aa.ferkioui@ensta.edu.dz",
   },
   {
-    name: "Jane Doe",
-    title: "Engineering Manager",
-    bio: "Lead engineering teams at Figma, Pitch, and Protocol Labs.",
+    name: "Hammouti Walid",
+    title: "Backend Developer",
+    bio: "Develops the system architecture and backend services using FastAPI.",
     imageUrl:
       "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600",
-    linkedinUrl: "#",
+    linkedinUrl: "https://www.linkedin.com/in/hammouti-walid-616952315?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     githubUrl: "#",
-    emailUrl: "mailto:#",
+    emailUrl: "mailto: aw.hammouti@ensta.edu.dz",
   },
   {
-    name: "Bob Smith",
-    title: "Product Manager",
-    bio: "Former PM for Linear, Lambda School, and On Deck.",
+    name: "Belouahar Sophia",
+    title: "Database Developer",
+    bio: "Manages database design, migrations, and data integrity across environments.",
     imageUrl:
       "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=600",
-    linkedinUrl: "#",
+    linkedinUrl: "https://www.linkedin.com/in/belouahar-sophia-251589391?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     githubUrl: "#",
-    emailUrl: "mailto:#",
+    emailUrl: "mailto:as.belouahar@ensta.edu.dz",
   },
   {
-    name: "Peter Johnson",
-    title: "Frontend Developer",
-    bio: "Former frontend dev for Linear, Coinbase, and Postscript.",
+    name: "Bouterbag Amal",
+    title: "Cryptography Developer",
+    bio: "Implements cryptographic protocols including RSA, blind signatures, and hashing.",
     imageUrl:
       "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=600",
-    linkedinUrl: "#",
+    linkedinUrl: "https://www.linkedin.com/in/amel-bouterbag-b80266334?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     githubUrl: "#",
-    emailUrl: "mailto:#",
+    emailUrl: "mailto:aa.bouterbag@ensta.edu.dz",
   },
   {
-    name: "David Lee",
-    title: "Backend Developer",
-    bio: "Lead backend dev at Clearbit. Former Clearbit and Loom.",
+    name: "Zerguini Maylis",
+    title: "Frontend Developer",
+    bio: "Designs and implements user interfaces across ley platform features",
     imageUrl:
       "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=600",
-    linkedinUrl: "#",
+    linkedinUrl: "https://www.linkedin.com/in/maylis-zerguini-b557b3291?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     githubUrl: "#",
-    emailUrl: "mailto:#",
+    emailUrl: "mailto:am.zerguini@ensta.edu.dz",
   },
 ];
 
@@ -69,8 +69,7 @@ const Team = () => {
             Leadership Team
           </h2>
           <p className="mt-4 text-base sm:text-lg">
-            We&apos;re a cross-disciplinary team that loves to create great
-            experiences for our customers.
+            We&apos;re a team building E-voting, a secure electronic voting system powered by RSA encryption, blind signatures, and cryptographic protocols.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row-reverse sm:justify-end">
             <Button size="lg">Contribute</Button>

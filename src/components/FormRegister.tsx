@@ -51,6 +51,7 @@ const RegisterForm = () => {
         } else {
           toast.error("Something went wrong. Please try again");
           form.setError("email", { message: "Something went wrong. Please try again." });
+          console.error("Registration error:", error);
         }
       },
     });

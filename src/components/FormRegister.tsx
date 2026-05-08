@@ -3,9 +3,17 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
-import { toast } from "sonner"
+import { toast } from "sonner";
+import axios from "axios";
 
 import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import {
   Field,
   FieldDescription,
@@ -15,7 +23,6 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { useRegisterVoter } from "@/hooks/useRegister";
-import axios from "axios";
 
 const formSchema = z.object({
   email: z
@@ -32,9 +39,7 @@ const RegisterForm = () => {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      email: "",
-    },
+    defaultValues: { email: "" },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
@@ -43,7 +48,6 @@ const RegisterForm = () => {
         toast.success("Your e-mail has been added");
         form.reset();
       },
-
       onError: (error) => {
         if (axios.isAxiosError(error) && error.response?.status === 409) {
           toast.error("This email already exists");
@@ -58,38 +62,46 @@ const RegisterForm = () => {
   }
 
   return (
-    <div className="w-full max-w-md">
-      <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
-        <FieldGroup>
-          <Controller
-            name="email"
-            control={form.control}
-            render={({ field, fieldState }) => (
-              <Field data-invalid={fieldState.invalid}>
-                <FieldLabel htmlFor={field.name}>Email</FieldLabel>
-                <Input
-                  {...field}
-                  id={field.name}
-                  aria-invalid={fieldState.invalid}
-                  className="bg-background"
-                  placeholder="you@example.com"
-                  type="email"
-                />
-                <FieldDescription>
-                  We'll never share your email with anyone.
-                </FieldDescription>
-                {fieldState.invalid && (
-                  <FieldError errors={[fieldState.error]} />
-                )}
-              </Field>
-            )}
-          />
-        </FieldGroup>
-        <Button type="submit" disabled={isPending}>
-          {isPending ? "Sending..." : "Send"}
-        </Button>
-      </form>
-    </div>
+    <Card className="w-full max-w-md">
+      <CardHeader>
+        <CardTitle>Register</CardTitle>
+        <CardDescription>
+          Please enter your email to register for the voting system.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
+          <FieldGroup>
+            <Controller
+              name="email"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor={field.name}>Email</FieldLabel>
+                  <Input
+                    {...field}
+                    id={field.name}
+                    aria-invalid={fieldState.invalid}
+                    className="bg-background"
+                    placeholder="you@example.com"
+                    type="email"
+                  />
+                  <FieldDescription>
+                    We&apos;ll never share your email with anyone.
+                  </FieldDescription>
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+          </FieldGroup>
+          <Button type="submit" disabled={isPending} className="w-full">
+            {isPending ? "Sending..." : "Register"}
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
   );
 };
 

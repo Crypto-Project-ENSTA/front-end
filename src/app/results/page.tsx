@@ -1,12 +1,12 @@
-"use client";
+'use client'
 
-import RegisterForm from "@/components/FormRegister";
-import { VoteEnded } from "@/components/Vote/VoteEnded";
-import { VoteStarted } from "@/components/Vote/VoteStarted";
-import { Spinner } from "@/components/ui/spinner";
+import VotingResults from "@/components/Results/VotingResults";
 import { useVotingStatus } from "@/hooks/useVoteStatus";
+import { Spinner } from "@/components/ui/spinner";
+import { VoteNotStarted } from "@/components/Vote/VoteNotStarted";
+import { VoteStarted } from "@/components/Vote/VoteStarted";
 
-export default function RegisterPage() {
+export default function ResultsPage() {
   const { data: status, isLoading, isError } = useVotingStatus();
 
   if (isLoading) {
@@ -27,10 +27,10 @@ export default function RegisterPage() {
     );
   }
 
-  if (status.voting_status === "vote_ended") {
+  if (status.voting_status === "register") {
     return (
       <div className="flex min-h-screen items-center justify-center">
-        <VoteEnded />
+        <VoteNotStarted />
       </div>
     );
   }
@@ -42,13 +42,5 @@ export default function RegisterPage() {
       </div>
     );
   }
-
-  return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-12">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold">Welcome to the Voting System</h1>
-      </div>
-      <RegisterForm />
-    </div>
-  );
+  return <VotingResults />;
 }

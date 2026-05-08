@@ -11,8 +11,8 @@ const links = [
     href: "/#contact",
   },
   {
-    title: "Terms of Service",
-    href: "/#terms",
+    title: "GitHub",
+    href: "https://github.com/Crypto-Project-ENSTA",
   },
   {
     title: "Privacy Policy",

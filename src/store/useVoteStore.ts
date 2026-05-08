@@ -1,12 +1,10 @@
 import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
 
 type VoteStore = {
   currentStep: number;
   n1: string | null;
-  isAuthenticated: boolean;
-
   next: () => void;
-  back: () => void;
   goTo: (step: number) => void;
   setN1: (n1: string) => void;
   reset: () => void;
@@ -14,24 +12,36 @@ type VoteStore = {
 
 const TOTAL_STEPS = 3;
 
-export const useVoteStore = create<VoteStore>((set) => ({
-  currentStep: 0,
-  n1: null,
-  isAuthenticated: false,
+export const useVoteStore = create<VoteStore>()(
+  persist(
+    (set, get) => ({
+      currentStep: 0,
+      n1: null,
 
-  next: () =>
-    set((state) => ({
-      currentStep: Math.min(state.currentStep + 1, TOTAL_STEPS - 1),
-    })),
+      next: () => {
+        const { currentStep } = get();
+        if (currentStep < TOTAL_STEPS - 1) {
+          set({ currentStep: currentStep + 1 });
+        }
+      },
 
-  back: () =>
-    set((state) => ({
-      currentStep: Math.max(state.currentStep - 1, 0),
-    })),
+      goTo: (step) => {
+        if (step >= 0 && step < TOTAL_STEPS) {
+          set({ currentStep: step });
+        }
+      },
 
-  goTo: (step) => set({ currentStep: step }),
+      setN1: (n1) => set({ n1 }),
 
-  setN1: (n1) => set({ n1, isAuthenticated: true }),
-
-  reset: () => set({ currentStep: 0, n1: null, isAuthenticated: false }),
-}));
+      reset: () => set({ currentStep: 0, n1: null }),
+    }),
+    {
+      name: "vote-session",
+      storage: createJSONStorage(() => localStorage),
+      partialize: (state) => ({
+        currentStep: state.currentStep,
+        n1: state.n1,
+      }),
+    },
+  ),
+);

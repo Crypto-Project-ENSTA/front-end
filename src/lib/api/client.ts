@@ -2,6 +2,7 @@ import axios from "axios";
 
 const client = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
+  withCredentials: true,
   headers: {
     "Content-Type": "application/json",
   },
@@ -9,7 +10,7 @@ const client = axios.create({
 
 // attach token to every request
 client.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token"); // or from zustand store
+  const token = localStorage.getItem("token");
   if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
 });

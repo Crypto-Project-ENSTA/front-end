@@ -10,7 +10,7 @@ import { ModeToggle } from "./ModeToggle";
 const menuItems = [
   { name: "Home", href: "/" },
   { name: "Vote", href: "/vote" },
-  { name: "Result", href: "/result" },
+  { name: "Results", href: "/results" },
   { name: "About", href: "/about" },
 ];
 
@@ -96,7 +96,7 @@ export const Navbar = () => {
                   size="lg"
                   className={cn(isScrolled && "lg:hidden")}
                 >
-                  <Link href="#">
+                  <Link href="/results/verify-vote">
                     <span>Verify Results</span>
                   </Link>
                 </Button>
@@ -105,8 +105,8 @@ export const Navbar = () => {
                   size="lg"
                   className={cn(isScrolled && "lg:hidden")}
                 >
-                  <Link href="#">
-                    <span>Start Voting</span>
+                  <Link href="/register">
+                    <span>Register</span>
                   </Link>
                 </Button>
                 <Button
@@ -116,8 +116,8 @@ export const Navbar = () => {
                     isScrolled ? "hidden lg:inline-flex" : "hidden",
                   )}
                 >
-                  <Link href="#">
-                    <span>Start Voting</span>
+                  <Link href="/register">
+                    <span>Register</span>
                   </Link>
                 </Button>
               </div>

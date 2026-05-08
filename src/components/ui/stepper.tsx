@@ -416,7 +416,7 @@ function StepperNav({ children, className }: React.ComponentProps<"nav">) {
       data-state={activeStep}
       data-orientation={orientation}
       className={cn(
-        "group/stepper-nav inline-flex data-[orientation=horizontal]:w-full data-[orientation=horizontal]:flex-row data-[orientation=vertical]:flex-col",
+        "group/stepper-nav flex data-[orientation=horizontal]:w-full data-[orientation=horizontal]:flex-row data-[orientation=vertical]:flex-col",
         className
       )}
     >

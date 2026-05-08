@@ -8,7 +8,15 @@ import axios from "axios";
 
 import { Button } from "@/components/ui/button";
 import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
   Field,
+  FieldDescription,
   FieldError,
   FieldGroup,
   FieldLabel,
@@ -63,34 +71,45 @@ const AuthStep = () => {
   }
 
   return (
-    <div className="w-full max-w-md mt-50">
-      <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
-        <FieldGroup>
-          <Controller
-            name="n1"
-            control={form.control}
-            render={({ field, fieldState }) => (
-              <Field data-invalid={fieldState.invalid}>
-                <FieldLabel htmlFor={field.name}>N1 Code</FieldLabel>
-                <Input
-                  {...field}
-                  id={field.name}
-                  aria-invalid={fieldState.invalid}
-                  className="bg-background"
-                  placeholder="Enter your N1 code"
-                />
-                {fieldState.invalid && (
-                  <FieldError errors={[fieldState.error]} />
-                )}
-              </Field>
-            )}
-          />
-        </FieldGroup>
-        <Button type="submit" disabled={isPending}>
-          {isPending ? "Verifying..." : "Verify"}
-        </Button>
-      </form>
-    </div>
+    <Card className="w-full max-w-md my-10">
+      <CardHeader>
+        <CardTitle>Authentication</CardTitle>
+        <CardDescription>
+          Enter your N1 code to verify your identity before voting.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
+          <FieldGroup>
+            <Controller
+              name="n1"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor={field.name}>N1 Code</FieldLabel>
+                  <Input
+                    {...field}
+                    id={field.name}
+                    aria-invalid={fieldState.invalid}
+                    className="bg-background font-mono"
+                    placeholder="e.g. A1B2C3D4E5F6"
+                  />
+                  <FieldDescription>
+                    Must be exactly 12 uppercase letters and numbers.
+                  </FieldDescription>
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+          </FieldGroup>
+          <Button type="submit" disabled={isPending} className="w-full">
+            {isPending ? "Verifying..." : "Verify"}
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
   );
 };
 

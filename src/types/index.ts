@@ -42,3 +42,13 @@ export type VerifyVoteResponse = {
   vote: string | null;
   message: string;
 };
+
+export type StartVoteResponse = {
+  status: "success" | "error";
+  message: string;
+}
+
+export type EndVoteResponse = {
+  status: "success" | "error";
+  message: string;
+}

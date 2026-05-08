@@ -65,7 +65,7 @@ export default function Hero() {
               className="mask-b-from-35% mask-b-to-90% absolute inset-0 top-56 -z-20 lg:top-32"
             >
               <Image
-                src="/image.png"
+                src="/timeline/results.png"
                 alt="system"
                 className="hidden size-full dark:block"
                 width="3276"
@@ -147,7 +147,7 @@ export default function Hero() {
                       size="lg"
                       className="rounded-(--radius) px-6 text-base font-semibold shadow-md transition-transform active:scale-95"
                     >
-                      <Link href="#link">
+                      <Link href="/vote">
                         <span className="text-nowrap">Start Voting</span>
                       </Link>
                     </Button>
@@ -160,7 +160,7 @@ export default function Hero() {
                     variant="ghost"
                     className="rounded-(--radius) px-6 text-foreground hover:bg-accent"
                   >
-                    <Link href="#link">
+                    <Link href="/results/verify-vote">
                       <span className="text-nowrap">Verify My vote</span>
                     </Link>
                   </Button>
@@ -186,14 +186,14 @@ export default function Hero() {
                 <div className="bg-card relative mx-auto max-w-6xl overflow-hidden rounded-2xl border border-border shadow-2xl shadow-primary/10 ring-1 ring-border p-2 md:p-4">
                   <Image
                     className="bg-background aspect-15/8 relative hidden rounded-xl dark:block"
-                    src="/image.jpg"
+                    src="/timeline/results.png"
                     alt="app screen"
                     width="2700"
                     height="1440"
                   />
                   <Image
                     className="z-2 border-border/25 aspect-15/8 relative rounded-xl border dark:hidden"
-                    src="/image.jpg"
+                    src="/timeline/results.png"
                     alt="app screen"
                     width="2700"
                     height="1440"

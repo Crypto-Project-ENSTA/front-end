@@ -9,16 +9,32 @@ export default function VotingTimeline() {
       content: (
         <div>
           <p className="mb-8 text-xs font-normal text-muted-foreground md:text-lg">
-             Each voter receives two unique codes: N1 (authentication) and N2 (verification). The commissioner holds a list of valid N1 codes.
+            Each voter submits their email to register. The system records
+            eligible voters and generates two unique codes: <strong>N1</strong> for
+            authentication and <strong>N2</strong> for vote verification.
+            The commissioner holds the list of valid N1 codes — no vote can be
+            cast without one.
           </p>
-           <p className="mb-8 text-xs font-normal text-muted-foreground md:text-lg">
-              The voter submits N1 to the administrator, who verifies it with the commissioner to confirm voting eligibility.
+          <p className="mb-8 text-xs font-normal text-muted-foreground md:text-lg">
+            Before voting, the voter submits their N1 code to the administrator,
+            who verifies eligibility with the commissioner and grants access
+            to the ballot.
           </p>
           <div className="grid grid-cols-2 gap-4">
-            <Image src="https://assets.aceternity.com/templates/startup-1.webp" alt="startup template" width={500} height={500} className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60" />
-            <Image src="https://assets.aceternity.com/templates/startup-2.webp" alt="startup template" width={500} height={500} className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60" />
-            <Image src="https://assets.aceternity.com/templates/startup-3.webp" alt="startup template" width={500} height={500} className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60" />
-            <Image src="https://assets.aceternity.com/templates/startup-4.webp" alt="startup template" width={500} height={500} className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60" />
+            <Image
+              src="/timeline/register.png"
+              alt="Registration page"
+              width={500}
+              height={500}
+              className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"
+            />
+            <Image
+              src="/timeline/auth.png"
+              alt="Authentication step"
+              width={500}
+              height={500}
+              className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"
+            />
           </div>
         </div>
       ),
@@ -28,19 +44,31 @@ export default function VotingTimeline() {
       content: (
         <div>
           <p className="mb-8 text-xs font-normal text-muted-foreground md:text-lg">
-            The voter selects their vote and forms a ballot containing the vote, N2, and random data.
+            The voter selects their candidate and enters their <strong>N2 code</strong>.
+            The ballot is masked using blind signatures before being sent to the
+            administrator for signing — ensuring the vote content stays hidden
+            even from the administrator.
           </p>
           <p className="mb-8 text-xs font-normal text-muted-foreground md:text-lg">
-             Using blind signatures, the voter masks the ballot before sending it to the administrator for signing, ensuring the vote remains hidden.
-          </p>
-           <p className="mb-8 text-xs font-normal text-muted-foreground md:text-lg">
-             The signed ballot is then unblinded, encrypted with the counter’s public key, and sent with N1 to the anonymizer, who validates and records the vote.
+            The signed ballot is unblinded, encrypted with the counter&apso;s public
+            key, and submitted anonymously through the anonymizer. No single
+            service can link a voter&apso;s identity to their decrypted ballot.
           </p>
           <div className="grid grid-cols-2 gap-4">
-            <Image src="https://assets.aceternity.com/pro/hero-sections.png" alt="hero template" width={500} height={500} className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60" />
-            <Image src="https://assets.aceternity.com/features-section.png" alt="feature template" width={500} height={500} className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60" />
-            <Image src="https://assets.aceternity.com/pro/bento-grids.png" alt="bento template" width={500} height={500} className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60" />
-            <Image src="https://assets.aceternity.com/cards.png" alt="cards template" width={500} height={500} className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60" />
+            <Image
+              src="/timeline/vote.png"
+              alt="Voting form"
+              width={500}
+              height={500}
+              className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"
+            />
+            <Image
+              src="/timeline/vote-submitted.png"
+              alt="Vote submitted confirmation"
+              width={500}
+              height={500}
+              className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"
+            />
           </div>
         </div>
       ),
@@ -49,20 +77,39 @@ export default function VotingTimeline() {
       title: "Results & Verification",
       content: (
         <div>
-          <p className="mb-4 text-xs font-normal text-muted-foreground md:text-lg">
-             After the voting period ends, the counter decrypts all ballots using its private key and verifies their authenticity using the administrator’s public key.
+          <p className="mb-8 text-xs font-normal text-muted-foreground md:text-lg">
+            After voting closes, the counter decrypts all ballots using its
+            private key and verifies authenticity using the administrator&apos;s
+            public key. The commissioner validates each N2 fingerprint against
+            stored hashes to reject any fraudulent ballots.
           </p>
-          <p className="mb-4 text-xs font-normal text-muted-foreground md:text-lg">
-             The commissioner checks the validity of N2 using stored hash fingerprints to prevent fraudulent votes.
+          <p className="mb-8 text-xs font-normal text-muted-foreground md:text-lg">
+            Valid votes are tallied and published. Any voter can confirm their
+            vote was counted by submitting their <strong>N2 code</strong> —
+            without revealing their identity or choice to anyone else.
           </p>
-          <p className="mb-4 text-xs font-normal text-muted-foreground md:text-lg">
-             Valid votes are counted, and published results allow voters to verify their vote using their N2 code without revealing their identity.
-             </p>        
           <div className="grid grid-cols-2 gap-4">
-            <Image src="https://assets.aceternity.com/pro/hero-sections.png" alt="hero template" width={500} height={500} className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60" />
-            <Image src="https://assets.aceternity.com/features-section.png" alt="feature template" width={500} height={500} className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60" />
-            <Image src="https://assets.aceternity.com/pro/bento-grids.png" alt="bento template" width={500} height={500} className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60" />
-            <Image src="https://assets.aceternity.com/cards.png" alt="cards template" width={500} height={500} className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60" />
+            <Image
+              src="/timeline/results.png"
+              alt="Results page"
+              width={500}
+              height={500}
+              className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"
+            />
+            <Image
+              src="/timeline/verify-my-vote.png"
+              alt="Verify my vote page"
+              width={500}
+              height={500}
+              className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"
+            />
+            <Image
+              src="/timeline/valid-vote.png"
+              alt="Valid vote confirmation dialog"
+              width={500}
+              height={500}
+              className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"
+            />
           </div>
         </div>
       ),

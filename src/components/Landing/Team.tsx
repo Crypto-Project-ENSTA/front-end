@@ -6,53 +6,53 @@ import { Button } from "@/components/ui/button";
 
 const teamMembers = [
   {
-    name: "Ferkioui Akram",
+    name: "FERKIOUI Akram",
     title: "Frontend Developer",
     bio: "Designs system architecture, builds UI, and integrates frontend with backend APIs.",
     imageUrl:
       "https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=600",
     linkedinUrl: "https://www.linkedin.com/in/ferkioui-akram?utm_source=share_via&utm_content=profile&utm_medium=member_android",
-    githubUrl: "#",
+    githubUrl: "https://github.com/akramfrk",
     emailUrl: "mailto:aa.ferkioui@ensta.edu.dz",
   },
   {
-    name: "Hammouti Walid",
+    name: "HAMMOUTI Walid",
     title: "Backend Developer",
     bio: "Designs backend architecture, ORM structure, configurations, routes, and services using FastAPI.",
     imageUrl:
       "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600",
     linkedinUrl: "https://www.linkedin.com/in/hammouti-walid-616952315?utm_source=share_via&utm_content=profile&utm_medium=member_android",
-    githubUrl: "#",
+    githubUrl: "https://github.com/walid-hammouti",
     emailUrl: "mailto: aw.hammouti@ensta.edu.dz",
   },
   {
-    name: "Belouahar Sophia",
+    name: "BELOUAHAR Sophia",
     title: "Database Developer",
     bio: "Manages database design, migrations, and ensures data integrity across all environments.",
     imageUrl:
       "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=600",
     linkedinUrl: "https://www.linkedin.com/in/belouahar-sophia-251589391?utm_source=share_via&utm_content=profile&utm_medium=member_android",
-    githubUrl: "#",
+    githubUrl: "https://github.com/Sophia254",
     emailUrl: "mailto:as.belouahar@ensta.edu.dz",
   },
   {
-    name: "Bouterbag Amal",
+    name: "BOUTERBAG Amal",
     title: "Cryptography Developer",
     bio: "Implements cryptographic protocols including RSA, blind signatures, and secure hashing mechanisms.",
     imageUrl:
       "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=600",
     linkedinUrl: "https://www.linkedin.com/in/amel-bouterbag-b80266334?utm_source=share_via&utm_content=profile&utm_medium=member_android",
-    githubUrl: "#",
+    githubUrl: "https://github.com/AmalCS0-A",
     emailUrl: "mailto:aa.bouterbag@ensta.edu.dz",
   },
   {
-    name: "Zerguini Maylis",
+    name: "ZERGUINI Maylis",
     title: "Frontend Developer",
     bio: "Designs and implements user interfaces across key platform features and user workflows.",
     imageUrl:
       "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=600",
     linkedinUrl: "https://www.linkedin.com/in/maylis-zerguini-b557b3291?utm_source=share_via&utm_content=profile&utm_medium=member_android",
-    githubUrl: "#",
+    githubUrl: "https://github.com/Maylis-Z",
     emailUrl: "mailto:am.zerguini@ensta.edu.dz",
   },
 ];
@@ -72,9 +72,15 @@ const Team = () => {
             We&apos;re a team building E-voting, a secure electronic voting system powered by RSA encryption, blind signatures, and cryptographic protocols.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row-reverse sm:justify-end">
-            <Button size="lg">Contribute</Button>
+            <Button size="lg">
+              <Link href="https://github.com/Crypto-Project-ENSTA" target="_blank">
+                Contribute
+              </Link>
+            </Button>
             <Button size="lg" variant="outline">
-              About Us
+              <Link href="/about">
+                About Us
+              </Link>
             </Button>
           </div>
         </div>

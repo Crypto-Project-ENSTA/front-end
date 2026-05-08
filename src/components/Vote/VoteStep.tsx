@@ -48,7 +48,6 @@ export default function VoteStep() {
       {
         onSuccess: () => {
           toast.success("Your vote has been submitted successfully.");
-          reset();
           next();
         },
         onError: (error) => {
@@ -176,7 +175,7 @@ export default function VoteStep() {
           Clear & Start Over
         </Button>
 
-        <Button type="submit" disabled={isPending} className="w-full" onClick={() => next()}>
+        <Button type="submit" disabled={isPending} className="w-full">
           {isPending ? "Submitting..." : "Submit Vote"}
         </Button>
       </form>
